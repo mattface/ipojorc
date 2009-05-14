@@ -41,7 +41,7 @@ public class UrbanLookup
 		String raw = fetchData();
 		//debug("raw = " + raw);
 		result = this.parse(raw, "definition");
-		if (result.isEmpty())
+		if (result.length() == 0)
 		{
 			return("not found");
 		}
@@ -53,7 +53,7 @@ public class UrbanLookup
 		String result = "";
 		String raw = fetchData();
 		result = this.parse(raw, "example");
-		if (result.isEmpty())
+		if (result.length() == 0)
 		{
 			return("not found");
 		}
