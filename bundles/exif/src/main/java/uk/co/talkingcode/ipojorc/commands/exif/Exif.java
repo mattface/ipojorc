@@ -5,14 +5,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
+import org.apache.felix.ipojo.annotations.Component;
+import org.apache.felix.ipojo.annotations.Provides;
 import org.apache.sanselan.ImageInfo;
 import org.apache.sanselan.ImageReadException;
 import org.apache.sanselan.Sanselan;
 import org.apache.sanselan.common.IImageMetadata;
 
 import uk.co.talkingcode.ipojorc.api.AbstractURLWatchingPrefixCommand;
-import uk.co.talkingcode.ipojorc.api.IRCMessage;
+import uk.co.talkingcode.ipojorc.api.messages.IRCMessage;
 
+@Provides
+@Component(name="ExifCommandProvider", architecture=true)
 public class Exif extends AbstractURLWatchingPrefixCommand {
 
   public Exif() {
@@ -21,6 +25,11 @@ public class Exif extends AbstractURLWatchingPrefixCommand {
 
   public String getDescription() {
     return "!exif - Reads the exif info for the most recently posted URL";
+  }
+
+  @Override
+  protected IRCMessage handleURL(IRCMessage message, String url) {
+    return null;
   }
 
   @Override

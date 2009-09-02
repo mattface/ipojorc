@@ -4,11 +4,10 @@
   <parent>
     <groupId>uk.co.talkingcode.ipojorc</groupId>
     <artifactId>base</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
   </parent>
   <artifactId>exif-command</artifactId>
   <packaging>bundle</packaging>
-  <version>0.1-SNAPSHOT</version>
   <name>Exif Command</name>
   <build>
     <plugins>
@@ -61,12 +60,17 @@
     <dependency>
       <groupId>uk.co.talkingcode.ipojorc</groupId>
       <artifactId>api</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.3-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.apache.sanselan</groupId>
       <artifactId>sanselan</artifactId>
       <version>0.97-incubator</version>
     </dependency> 
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.ipojo.annotations</artifactId>
+      <version>1.2.0</version>
+		</dependency>
   </dependencies>
 </project>

@@ -1,10 +1,15 @@
 package uk.co.talkingcode.ipojorc.api;
 
+import uk.co.talkingcode.ipojorc.api.messages.IRCMessage;
+import uk.co.talkingcode.ipojorc.api.messages.PrivateIRCMessage;
+import uk.co.talkingcode.ipojorc.api.messages.PublicIRCMessage;
+
 public abstract class AbstractPrefixCommand implements IRCCommand {
 
   private String prefix;
 
-  public IRCMessage handlePublicMessage(IRCMessage message) {
+  protected IRCMessage detectAndProcessPrefixCommand(IRCMessage message)
+  {
     if (!message.isProcessed())
     {
       String messageText = message.getMessage();
@@ -15,11 +20,15 @@ public abstract class AbstractPrefixCommand implements IRCCommand {
         return handleCommand(message, (parts.length == 2 ? parts[1] : null));
       }
     }
-    return null;
+    return null;    
+  }
+  
+  public IRCMessage handlePublicMessage(PublicIRCMessage message) {
+    return detectAndProcessPrefixCommand(message);
   }
 
-  public IRCMessage handlePrivateMessage(IRCMessage message) {
-    return handlePublicMessage(message);
+  public IRCMessage handlePrivateMessage(PrivateIRCMessage message) {
+    return detectAndProcessPrefixCommand(message);
   }
 
   protected abstract IRCMessage handleCommand(IRCMessage message, String data);

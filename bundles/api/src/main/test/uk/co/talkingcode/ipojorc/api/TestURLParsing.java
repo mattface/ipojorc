@@ -5,6 +5,8 @@ import static junit.framework.Assert.assertEquals;
 
 import org.junit.Test;
 
+import uk.co.talkingcode.ipojorc.api.messages.IRCMessage;
+
 public class TestURLParsing {
 
   @Test
@@ -18,6 +20,11 @@ public class TestURLParsing {
       }
 
       public String getDescription() {
+        return null;
+      }
+
+      @Override
+      protected IRCMessage handleURL(IRCMessage message, String url) {
         return null;
       }
     };
