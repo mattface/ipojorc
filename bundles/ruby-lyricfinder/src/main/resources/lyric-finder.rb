@@ -14,9 +14,10 @@ class RubyLyricFinder
 
   def handleMessage(ircMessage)
     puts "Handling: " + ircMessage.message
-    match = ircMessage.message.match(/.*\/~ (.*) ~\/.*/)[1].gsub(/[,.\/\\!?'"]/, '')
+    match = ircMessage.message.match(/.*\/~ (.*) ~\/.*/)
     if (match != nil and match.size > 0)
-      return lyricfind(match)
+      query = match[1].gsub(/[,.\/\\!?'"]/, '')
+      return lyricfind(query)
     else
       return nil
     end
